@@ -18,7 +18,7 @@ namespace pigvscakes
             {
                 Apple manzana = new Apple(new Point(rnd.Next(
                     Game1.Instance.graphics.GraphicsDevice.Viewport.Width
-                    ), 450));
+                    ), 350));
                 Game1.Instance.newSprites.Add(manzana);
                 tiempoanterior = gameTime.TotalGameTime;
             }

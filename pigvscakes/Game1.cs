@@ -50,7 +50,8 @@ namespace pigvscakes
         Random random;
         int points;
         int lifes;
-        int bombs;
+        int level;
+        int shoots;
         Texture2D sniperTexture;
         Rectangle sniperRectangle;
         MouseState previousMouseState;
@@ -108,7 +109,8 @@ namespace pigvscakes
             random = new Random();
             lifes = 5;
             points = 0;
-            bombs = 10;
+            level = 2;
+            shoots = 5;
             deads = new List<Animation>();
             explosions = new List<Animation>();
 
@@ -137,7 +139,15 @@ namespace pigvscakes
 
 
             //Fondo
-            desplazamiento.Initialize (Game1.Instance.Content.Load<Texture2D>("background"),0,0,Direction.LeftRight,1,width,height);
+            if (level == 1)
+            {
+                desplazamiento.Initialize(Game1.Instance.Content.Load<Texture2D>("background"), 0, 0, Direction.LeftRight, 1, width, height);
+            }
+            else
+            {
+                desplazamiento.Initialize(Game1.Instance.Content.Load<Texture2D>("background2"), 0, 0, Direction.LeftRight, 1, width, height);
+            }
+                
 
             //Fuente
             font = Game1.Instance.Content.Load<Microsoft.Xna.Framework.Graphics.SpriteFont>("fonts/score");
@@ -146,7 +156,7 @@ namespace pigvscakes
             Sprites.Add(new Pig(new Point(300, 430), Point.Zero, new Point(70, 65)));
 
             //Manzanas
-            //Sprites.Add(new AppleFabric());
+            Sprites.Add(new AppleFabric());
 
             //disparos
             //Sprites.Add(new Shoot(Point.Zero, Point.Zero, new Point(70, 65)));
@@ -164,7 +174,7 @@ namespace pigvscakes
             //animation.Initialize(texture, vector2, 75, 65, 3, 160, Color.White, 1f, true);
 
             //prueba
-            cerdosTexture.Add(Game1.Instance.Content.Load<Texture2D>("pig"));
+            cerdosTexture.Add(Game1.Instance.Content.Load<Texture2D>("cake"));
             sniperTexture = Game1.Instance.Content.Load<Texture2D>("sniper");
             sniperRectangle = new Rectangle ((width - 100)/2, (height -100) /2 , 40 , 40);
             deadTexture = Game1.Instance.Content.Load<Texture2D>("explosion");
@@ -262,12 +272,18 @@ namespace pigvscakes
             sniperRectangle.X = mouseState.X;
             sniperRectangle.Y = mouseState.Y;
 
-            if (mouseState.LeftButton == ButtonState.Pressed && 
-                previousMouseState.LeftButton != ButtonState.Pressed)
+            if (shoots > 0)
             {
-                shoot.Play();
-                CheckKill(); 
+                if (mouseState.LeftButton == ButtonState.Pressed &&
+                    previousMouseState.LeftButton != ButtonState.Pressed)
+                {
+                    shoot.Play();
+                    CheckKill();
+                }
+
             }
+
+
             UpdateDeads(gameTime);
 
 
@@ -313,6 +329,7 @@ namespace pigvscakes
 
                     addDead(sniperRectangle.X + 50, sniperRectangle.Y + 50);
                     points++;
+                    shoots--;
                     cerdos.RemoveAt(i);
                     return;
 
@@ -332,13 +349,13 @@ namespace pigvscakes
         private void UpdateCerdos(GameTime gameTime)
         {
             TimeSpan timetoCerdo = TimeSpan.FromSeconds(secondsToCerdo);
-            if(gameTime.TotalGameTime - previouscerdosTimeSpan > timetoCerdo)
+            if (gameTime.TotalGameTime - previouscerdosTimeSpan > timetoCerdo)
             {
                 AddCerdo(gameTime);
                 previouscerdosTimeSpan = gameTime.TotalGameTime;
                 secondsToCerdo *= 0.95f;
                 if (secondsToCerdo < 0.3f) secondsToCerdo = 0.3f;
-                
+
             }
 
             for (int i=0; i < cerdos.Count; i++)
@@ -362,9 +379,9 @@ namespace pigvscakes
         private void AddCerdo(GameTime gameTime)
         {
             Animation animation = new Animation();
-            Direction direction = Direction.LeftRight;
-            Vector2 vector2 = new Vector2(50, 300);
-            animation.Initialize(cerdosTexture[0], vector2, 75, 65, 3, 160, Color.White, 1f, true);
+            Direction direction = Direction.RightLeft;
+            Vector2 vector2 = new Vector2(750, 460);
+            animation.Initialize(cerdosTexture[0], vector2, 60, 55, 14, 120, Color.White, 1f, true);
 
             cerdo cerdo = new cerdo();
             cerdo.Initialize(animation, direction, cerdo.MovementType.Recto);
@@ -411,9 +428,10 @@ namespace pigvscakes
             //prueba
             DrawCerdos(spriteBatch);
             DrawDeads(spriteBatch);
-            spriteBatch.DrawString(font,"Lifes: " + lifes, new Vector2(10, 0), Color.White);
-            spriteBatch.DrawString(font, "Points: " + points, new Vector2(10, 50), Color.White);
-            spriteBatch.DrawString(font, "Bombs: " + bombs, new Vector2(10, 100), Color.White);
+            spriteBatch.DrawString(font,"Lifes: " + lifes, new Vector2(10, 10), Color.White);
+            spriteBatch.DrawString(font, "Points: " + points, new Vector2(180, 10), Color.White);
+            spriteBatch.DrawString(font, "Shoots: " + shoots, new Vector2(360, 10), Color.White);
+            spriteBatch.DrawString(font, "Level: " + level, new Vector2(540, 10), Color.White);
             spriteBatch.Draw(sniperTexture, sniperRectangle, Color.White);
 
 

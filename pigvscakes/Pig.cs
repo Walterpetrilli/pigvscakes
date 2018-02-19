@@ -67,7 +67,7 @@ namespace pigvscakes
                 }
             }
 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            else if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
                 Yanterior = y;
                 saltando = true;
@@ -78,7 +78,7 @@ namespace pigvscakes
 
             //Movimiento a la derecha
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
 
                 x += 2;
@@ -90,7 +90,7 @@ namespace pigvscakes
 
             //Movimiento a la Izquierda
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
 
                 x -= 2;

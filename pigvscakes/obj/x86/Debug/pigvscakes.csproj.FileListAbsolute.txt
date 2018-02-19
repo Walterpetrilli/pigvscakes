@@ -38,3 +38,6 @@ C:\Users\Felipe\Box Sync\IFTS18\Programacion Aplicada\pigvscakes\pigvscakes\bin\
 C:\Users\Felipe\Box Sync\IFTS18\Programacion Aplicada\pigvscakes\pigvscakes\bin\Windows\x86\Debug\Content\sounds\shoot.xnb
 C:\Users\Felipe\Box Sync\IFTS18\Programacion Aplicada\pigvscakes\pigvscakes\bin\Windows\x86\Debug\Content\sounds\musica.wma
 C:\Users\Felipe\Box Sync\IFTS18\Programacion Aplicada\pigvscakes\pigvscakes\bin\Windows\x86\Debug\Content\sounds\musica.xnb
+C:\Users\Felipe\Box Sync\IFTS18\Programacion Aplicada\pigvscakes\pigvscakes\bin\Windows\x86\Debug\Content\cake.xnb
+C:\Users\Felipe\Box Sync\IFTS18\Programacion Aplicada\pigvscakes\pigvscakes\bin\Windows\x86\Debug\Content\cake_dead.xnb
+C:\Users\Felipe\Box Sync\IFTS18\Programacion Aplicada\pigvscakes\pigvscakes\bin\Windows\x86\Debug\Content\background2.xnb

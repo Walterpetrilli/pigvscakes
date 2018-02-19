@@ -57,12 +57,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
+    <Compile Include="Boss.cs" />
     <Compile Include="Cake.cs" />
     <Compile Include="cerdo.cs" />
     <Compile Include="EnemyFabric.cs" />
     <Compile Include="FabricBase.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="HealthySprite.cs" />
+    <Compile Include="Level.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Move.cs" />
     <Compile Include="MultiImageSprite.cs" />
     <Compile Include="Pig.cs" />
@@ -86,7 +89,10 @@
   <ItemGroup>
     <Content Include="Content\apple.png" />
     <Content Include="Content\background.png" />
+    <Content Include="Content\background2.png" />
     <Content Include="Content\button.png" />
+    <Content Include="Content\cake.png" />
+    <Content Include="Content\cake_dead.png" />
     <Content Include="Content\cake_life.png" />
     <Content Include="Content\explosion.png" />
     <Content Include="Content\explosion1.png" />
