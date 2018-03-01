@@ -57,6 +57,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
+    <Compile Include="AnimationSprite.cs" />
     <Compile Include="Boss.cs" />
     <Compile Include="Cake.cs" />
     <Compile Include="cerdo.cs" />
@@ -64,10 +65,10 @@
     <Compile Include="FabricBase.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="HealthySprite.cs" />
-    <Compile Include="Level.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Move.cs" />
     <Compile Include="MultiImageSprite.cs" />
+    <Compile Include="NewPig.cs" />
     <Compile Include="Pig.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,7 +110,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Content\fonts\ready.spritefont" />
     <None Include="Content\fonts\score.spritefont" />
   </ItemGroup>

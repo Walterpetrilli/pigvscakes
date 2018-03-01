@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,6 +25,11 @@ namespace pigvscakes
 
         //Crear Menu
 
+
+
+
+
+
         //formulario 
         int width;
         int height;
@@ -41,6 +47,7 @@ namespace pigvscakes
 
         //sprite animado
         //Animation animation;
+        NewPig cerdo1;
 
         //pruebas
         List<cerdo> cerdos;
@@ -63,6 +70,12 @@ namespace pigvscakes
         static StreamWriter escribir;
         SoundEffect shoot;
         Song song;
+
+        //GUARDAR SCORE
+
+        //NUEVO CODIGO
+        Texture2D cerdo;
+
 
 
 
@@ -98,9 +111,10 @@ namespace pigvscakes
 
             // Sprite animado
             //animation = new Animation();
+            
 
-            //prueba
-            leer = new StreamReader("C:/Users/Felipe/Desktop/prueba.txt");
+            //score
+
 
             cerdos = new List<cerdo>();
             previouscerdosTimeSpan = TimeSpan.Zero;
@@ -138,6 +152,11 @@ namespace pigvscakes
             //Menu
 
 
+
+
+
+
+
             //Fondo
             if (level == 1)
             {
@@ -169,7 +188,7 @@ namespace pigvscakes
 
 
             //Sprite animado
-            //Texture2D texture = Game1.Instance.Content.Load<Texture2D>("pig");
+            cerdo = Game1.Instance.Content.Load<Texture2D>("pig");
             //Vector2 vector2 = new Vector2(50, 100);
             //animation.Initialize(texture, vector2, 75, 65, 3, 160, Color.White, 1f, true);
 
@@ -183,6 +202,10 @@ namespace pigvscakes
             shoot = Game1.Instance.Content.Load<SoundEffect>("sounds/shoot");
 
             Sounds.Play(song);
+
+            //NUEVO CODIGO
+            cerdo1 = new NewPig(cerdo);
+            Sprites.Add(new NewPig(cerdo));
 
         }
 
@@ -283,14 +306,26 @@ namespace pigvscakes
 
             }
 
+            //SCORE
+
+
+            if (lifes==4)
+            {
+
+                SaveScore();
+
+            }
+
+
 
             UpdateDeads(gameTime);
 
 
             //Fondo
             desplazamiento.Update(gameTime);
+            cerdo1.Update(gameTime);
 
-            SaveScore(gameTime);
+            
 
 
 
@@ -298,14 +333,7 @@ namespace pigvscakes
 
         }
 
-        private void SaveScore(GameTime gameTime)
-        {
-            if (lifes == 0)
-            {
-               
 
-            }
-        }
 
         //prueba
 
@@ -337,6 +365,16 @@ namespace pigvscakes
                 
 
             }
+        }
+
+        private void SaveScore()
+        {
+
+            StreamWriter file = File.AppendText("C://Users//Felipe//Desktop//juego.txt");
+            string puntaje = points.ToString();
+            file.WriteLine(puntaje);
+            file.Close();
+
         }
 
         private void addDead(int x, int y)
@@ -424,6 +462,7 @@ namespace pigvscakes
 
             //Sprite animado
             //animation.Draw(spriteBatch);
+            cerdo1.Draw(gameTime);
 
             //prueba
             DrawCerdos(spriteBatch);
